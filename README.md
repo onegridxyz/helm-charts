@@ -42,6 +42,42 @@ $ helm upgrade -n ingress-nginx ingress-nginx -f values.yaml .
 $ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 ```
 
+## Install test demo app
+
+```bash
+$ kubectl create namespace demo
+
+$ kubectl apply -f demo-app.yml -n demo
+```
+
+Create Ubuntu app to test connection
+
+```bash
+cat <<EOF | kubectl -n demo apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  labels:
+    app: ubuntu
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu:latest
+    command: ["/bin/sleep", "3650d"]
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+EOF
+
+
+$ kubectl -n demo exec -ti ubuntu -- bash
+root@ubuntu:/# apt update && apt install curl -y
+root@ubuntu:/# curl apple-service:5678
+apple
+root@ubuntu:/# curl banana-service:5678
+banana
+```
+
 ## Utilities
 
 ```bash
@@ -61,6 +97,10 @@ $ kubectl get deployments
 $ kubectl get services
 
 $ kubectl port-forward service/onegrid-ingress-nginx-ingress-controller 8080:80
+
+# Delete all resources in demo namespace
+$ kubectl delete all --all -n demo
+$ kubectl delete namespace
 ```
 
 
