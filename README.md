@@ -1,5 +1,27 @@
 # helm-charts
 
+## Install Nginx Ingress Controller
+
+```bash
+# Download nginx-controller
+$ controller_tag=$(curl -s https://api.github.com/repos/kubernetes/ingress-nginx/releases/latest | grep tag_name | cut -d '"' -f 4)
+$ wget https://github.com/kubernetes/ingress-nginx/archive/refs/tags/${controller_tag}.tar.gz
+
+# Extract the file downloaded:
+$ tar xvf ${controller_tag}.tar.gz
+
+# Switch to the directory created:
+$ cd ingress-nginx-${controller_tag}
+
+# Change your working directory to charts folder:
+$ cd charts/ingress-nginx/
+
+# Create namespace
+$ kubectl create namespace ingress-nginx
+```
+
+## Utilities
+
 ```bash
 # Add helm repository
 $ helm repo add nginx-stable https://helm.nginx.com/stable
@@ -18,6 +40,8 @@ $ kubectl get services
 
 $ kubectl port-forward service/onegrid-ingress-nginx-ingress-controller 8080:80
 ```
+
+
 
 # References
 
