@@ -18,6 +18,28 @@ $ cd charts/ingress-nginx/
 
 # Create namespace
 $ kubectl create namespace ingress-nginx
+
+# You can watch the status by running
+$ kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller
+
+# Check status of all resources in ingress-nginx namespace:
+$ kubectl get all -n ingress-nginx
+
+# Checking runningPods in the namespace.
+$ kubectl get pods -n ingress-nginx
+
+# check logs
+$ kubectl -n ingress-nginx  logs deploy/ingress-nginx-controller
+$ kubectl -n ingress-nginx  logs deploy/ingress-nginx-controller -f # stream
+
+# current deploy
+$ kubectl -n ingress-nginx  get deploy
+
+# upgrade helm chart
+$ helm upgrade -n ingress-nginx ingress-nginx -f values.yaml .
+
+# Use the following command to see that IP address or FQDN:
+$ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 ```
 
 ## Utilities
