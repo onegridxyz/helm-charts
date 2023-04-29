@@ -22,3 +22,4 @@ $ kubectl port-forward service/onegrid-ingress-nginx-ingress-controller 8080:80
 # References
 
 1. https://platform9.com/learn/v1.0/tutorials/nginix-controller-helm
+2. https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
