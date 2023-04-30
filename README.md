@@ -19,6 +19,9 @@ $ cd charts/ingress-nginx/
 # Create namespace
 $ kubectl create namespace ingress-nginx
 
+# Install nginx-controller
+$ helm install -n ingress-nginx ingress-nginx  -f values.yaml .
+
 # You can watch the status by running
 $ kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller
 
@@ -111,3 +114,4 @@ $ kubectl delete namespace
 2. https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 3. https://computingforgeeks.com/deploy-nginx-ingress-controller-on-kubernetes-using-helm-chart/
 4. https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html
+5. https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/nginx-configuration/annotations.md#whitelist-source-range
