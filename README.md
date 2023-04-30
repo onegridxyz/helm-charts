@@ -110,3 +110,4 @@ $ kubectl delete namespace
 1. https://platform9.com/learn/v1.0/tutorials/nginix-controller-helm
 2. https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 3. https://computingforgeeks.com/deploy-nginx-ingress-controller-on-kubernetes-using-helm-chart/
+4. https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html
